@@ -1,0 +1,22 @@
+.chart_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    width: 60%;
+    position: relative;
+}
+
+.chart-ctn {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#displayed-interval {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+}

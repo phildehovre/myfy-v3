@@ -1,0 +1,41 @@
+.carousel-ctn {
+    display: flex;
+    width: 100%;
+
+    &.slicing {
+        transform: translateX(-23%);
+        transition: 1750ms ease-in-out all;
+    }
+
+    .cell {
+        min-width: 20%;
+        max-width: 20%;
+        opacity: 1;
+        background-color: rgb(63, 63, 63);
+        padding: 1em;
+        border-radius: 10px;
+        margin: 0 1% 0 0;
+        cursor: pointer;
+        font-size: 1.1em;
+        max-height: 100px;
+
+
+        &.slicing {
+            transition: all 1750ms ease-in-out;
+            opacity: 0;
+            transform: translateX(-20%);
+        }
+
+        &.last {
+            opacity: 0;
+            transform: translateX(20%);
+        }
+
+        &.appearing {
+            transform: translateX(0%);
+            transition: all 1750ms ease-in-out;
+            transition-delay: 200ms;
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.quote-ctn {
+    min-width: 300px;
+    max-width: 400px;
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    h4 {
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .price_range-ctn {
+
+        input {
+            max-width: fit-content;
+        }
+
+        span {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

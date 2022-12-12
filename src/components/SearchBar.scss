@@ -1,0 +1,136 @@
+.searchbar_form-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.searchbar {
+    border: 2px solid rgb(216, 216, 216);
+    padding: .3em;
+    border-radius: 30px;
+    min-width: 300px;
+    max-width: 750px;
+    font-size: larger;
+    background-color: white;
+    color: black;
+    z-index: 0;
+    position: relative;
+}
+
+.searchbar-btn {
+    border: 2px solid rgb(216, 216, 216);
+    display: none;
+    height: 2.85em;
+    z-index: 1;
+    width: 75px;
+    font-weight: bolder;
+    font-size: large;
+    position: absolute;
+
+    &:hover {
+        background-color: rgb(153, 181, 206);
+        cursor: pointer;
+    }
+}
+
+
+.autocomplete-list {
+    z-index: 100;
+    min-width: 500px;
+    max-width: 750px;
+    height: fit-content;
+    list-style: none;
+    position: absolute;
+    border-radius: 10px;
+    top: 50px;
+    padding: 0;
+    background-color: white;
+
+
+    &-item {
+        display: grid;
+        color: grey;
+        height: 2em;
+        grid-template-columns: 15% 45% 25% 10%;
+        cursor: pointer;
+        padding: .7em;
+        transition: 150ms ease-in-out all;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+        transition: 150ms ease-in-out all;
+        position: relative;
+
+        &:hover {
+            background-color: rgb(230, 249, 255);
+            transition: 150ms ease-in-out all;
+        }
+
+        .symbol {
+            text-align: left;
+        }
+
+        .shortname {
+            text-align: left;
+        }
+    }
+
+    .watchlist_add-btn {
+        display: none;
+        background-color: transparent;
+
+        &.visible {
+            background-color: transparent;
+            padding: .5em;
+            position: absolute;
+            display: flex;
+            font-weight: bold;
+            font-size: 20px;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+            transition: 100ms ease-in all;
+            right: .5em;
+
+            &:hover {
+                transform: scale(1.4);
+                transition: 100ms ease-in all;
+            }
+        }
+
+    }
+
+}
+
+.instrument_selection {
+    &-ctn {
+        display: flex;
+    }
+
+    &-btn {
+        background-color: white;
+        padding: 1em;
+        margin: 1em;
+        border: 1px solid rgb(188, 220, 248);
+        border-radius: 26px;
+        cursor: pointer;
+        width: 200px;
+        font-weight: bold;
+        font-size: large;
+
+        &:focus {
+            background-color: rgb(188, 220, 248);
+        }
+
+        &.active {
+            background-color: rgb(188, 220, 248);
+        }
+
+        &:hover {
+            background-color: rgb(188, 220, 248);
+
+        }
+    }
+
+}

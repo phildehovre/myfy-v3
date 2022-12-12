@@ -1,0 +1,44 @@
+.navbar-ctn {
+    height: 5em;
+    top: 0;
+    width: 99vw;
+    display: grid;
+    grid-template-columns: 10% clamp(10%, 500px, 60%) clamp(20%, 60%, 700px);
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.buttons-ctn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+    transform-origin: left;
+    transition: 250ms ease-in border;
+    border: none;
+
+    &:hover {
+        border-bottom: 1px solid white;
+        transform-origin: right;
+        transition: 250ms ease-in border;
+        color: white;
+    }
+}
+
+.logo {
+    padding: .5em;
+    font-size: 3em;
+    font-weight: bolder;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+
+        border: none;
+    }
+}

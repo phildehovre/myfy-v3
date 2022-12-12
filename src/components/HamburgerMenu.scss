@@ -1,0 +1,62 @@
+.menu-wrapper {
+    cursor: pointer;
+    height: 2.5em;
+    width: 2.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .dropdown-ctn {
+        position: absolute;
+        // transform: translate(-50%, 75px);
+        height: fit-content;
+        padding: .2em;
+        border: 1px solid white;
+        padding: .1em;
+
+        .menu-item {
+            width: 100%;
+            padding: .25em;
+            margin: 0;
+            list-style: none;
+        }
+
+        .menu-item {
+
+            &:hover {
+                background-color: grey;
+            }
+        }
+    }
+}
+
+.menu_icon-ctn {
+    height: .1em;
+    width: 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 15%;
+
+
+    &:before {
+        content: '';
+        height: .1em;
+        width: 30px;
+        background-color: white;
+        border-radius: 15%;
+        position: absolute;
+        transform: translate(-15px, -10px)
+    }
+
+    &:after {
+        height: .1em;
+        width: 30px;
+        background-color: white;
+        border-radius: 15%;
+        position: absolute;
+        content: '';
+        transform: translate(-15px, 10px)
+    }
+}

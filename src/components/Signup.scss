@@ -1,0 +1,30 @@
+.signup_form-ctn {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 16px;
+    padding: 3em;
+
+    form {
+        height: 100%;
+        width: 600%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        input {
+            border-radius: 6px;
+            padding: 1em;
+            margin: .5em
+        }
+
+        label {
+            color: rgb(250, 107, 107);
+        }
+    }
+}
