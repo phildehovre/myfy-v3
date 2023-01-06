@@ -47,11 +47,6 @@ export const useUser = (uid, onSuccess, onError) => {
     })
 };
 
-export const fetchWatchlist = async (uid) => {
-    const res = await getDoc(doc(db, 'users', uid), {
-    })
-    return res.data()
-};
 
 // Create a new user
 export function createUser(uid, data) {
@@ -153,7 +148,6 @@ export function QueryClientProvider(props) {
 
 
 const fetchTimeSeries = (t, interval = '1h', outputSize = 5000) => {
-    console.log('fetching time series')
     return axios.get(`https://api.twelvedata.com/time_series?symbol=${t.symbol}&apikey=${import.meta.env.VITE_REACT_APP_TWELVEDATA_API_KEY}`, {
         params: {
             symbol: t.symbol,
@@ -172,7 +166,6 @@ export const useTimeSeries = (t, interval, onSuccess, onError) => {
 };
 
 const fetchBatch = (array, interval = '1day', outputSize = 5000) => {
-    console.log('fetching batch')
     let symbolTemplateString = array.length > 1 ? array.join(',') : array
     return axios.get(`https://api.twelvedata.com/time_series?symbol=${symbolTemplateString}&apikey=${import.meta.env.VITE_REACT_APP_TWELVEDATA_API_KEY}`, {
         params: {
@@ -193,7 +186,6 @@ export const useBatchRequest = (t, interval, onSuccess, onError) => {
 };
 
 const fetchQuote = (t, interval = '1day') => {
-    console.log('fetching quote')
     return axios.get(`https://api.twelvedata.com/quote?symbol=${t.symbol}&interval=${interval}&apikey=${import.meta.env.VITE_REACT_APP_TWELVEDATA_API_KEY}`)
 };
 
@@ -218,6 +210,12 @@ export const useNews = (q, size, onSuccess, onError) => {
         refetch: false
     });
 }
+
+export const fetchWatchlist = async (uid) => {
+    const res = await getDoc(doc(db, 'users', uid), {
+    })
+    return res.data()
+};
 
 export const updateWatchlist = async (uid, ticker) => {
     const docRef = doc(db, "watchlists", uid)

@@ -26,12 +26,14 @@ function TickerQuote() {
             alert(data.data.message)
             navigate('/')
         }
-        console.log(data)
     }
 
     const onError = (err) => {
         console.log(err)
     }
+
+
+    console.log('is quote rendering?')
 
     const {
         selectedTicker,

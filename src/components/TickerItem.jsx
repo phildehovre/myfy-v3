@@ -20,9 +20,10 @@ function TickerItem(props) {
 
     const onDelete = (t) => {
         deleteItem(t, auth.currentUser.uid)
+        selectFirstTicker()
     }
 
-    const { handleTickerSelection } = useContext(selectedTickerContext)
+    const { handleTickerSelection, selectFirstTicker } = useContext(selectedTickerContext)
 
     useState(() => {
     }, [itemForDeletion])

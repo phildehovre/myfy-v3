@@ -24,7 +24,7 @@ function WatchlistPage() {
         watchlistError,
         watchlistData,
         showModal,
-        tickerData
+        tickerData, setSelectedTicker
     } = useContext(selectedTickerContext)
 
     const handleTickerItemClick = (ticker) => {
@@ -75,10 +75,10 @@ function WatchlistPage() {
                         {renderWatchlistPage()}
                     </PageContainer>
             }
-            {
+            {/* {
                 watchlistError &&
                 <div className='error'>{error.message}</div>
-            }
+            } */}
         </>
     )
 };

@@ -4,7 +4,8 @@ import {
     // useTimeSeries,
     useWatchlistByOwner,
     //   useQuote,
-    useBatchRequest
+    useBatchRequest,
+    useTimeSeries
 } from '../utils/db'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
@@ -30,7 +31,6 @@ function SelectedTickerProvider({ children }) {
         }
     }
 
-    console.log('context rerender')
 
     const onWatchlistSuccess = (data) => {
     }
@@ -38,11 +38,17 @@ function SelectedTickerProvider({ children }) {
         // console.log(data)
     }
 
+
+    function selectFirstTicker() {
+        setSelectedTicker(watchlistData?.watchlist[0])
+    }
+
+
     const {
-        data: batchData,
-        isLoading: isBatchLoading,
-        error: batchError
-    } = useBatchRequest(tickerArray, interval, onSuccess)
+        data: timeSeriesData,
+        isLoading: isTimeSeriesLoading,
+        error: timeSeriesError
+    } = useTimeSeries(selectedTicker, interval, onSuccess)
 
     const {
         data: watchlistData,
@@ -58,12 +64,6 @@ function SelectedTickerProvider({ children }) {
             })
         }
     }, [watchlistData])
-
-    useEffect(() => {
-        if (tickerArray?.length > 0) {
-            setTickerData(batchData?.data[selectedTicker])
-        }
-    }, [tickerArray])
 
 
     // Display top of stack ticker on mount
@@ -85,12 +85,11 @@ function SelectedTickerProvider({ children }) {
         interval,
         setInterval,
         handleTickerSelection,
-        selectedTicker,
+        selectedTicker, selectFirstTicker,
         tickerData,
-        isBatchLoading,
-        batchData,
-        batchError,
-        showModal, setShowModal
+        showModal, setShowModal,
+        timeSeriesData, isTimeSeriesLoading, timeSeriesError,
+
     }
 
     return (

@@ -3,6 +3,7 @@ import Chart from './Chart'
 // import { useTimeSeries } from '../utils/db'
 import './Chart.scss'
 import { selectedTickerContext } from '../contexts/SelectedTickerProvider'
+import Spinner from './Spinner'
 
 function ChartWrapper({ selectedTicker }) {
 
@@ -13,21 +14,19 @@ function ChartWrapper({ selectedTicker }) {
     const [interval, setInterval] = useState()
 
     const {
-        batchData,
-        // tickerData: data,
+        timeSeriesData: data,
         isTickerLoading: isLoading,
         isTickerError: errors
     } = useContext(selectedTickerContext)
 
 
-    useEffect(() => {
-        let data = batchData?.data[selectedTicker?.symbol]
-        setSample(data?.values.slice(0, sampleSize).reverse())
-    }, []);
-
     // useEffect(() => {
-    //     setSample(data?.data.values.slice(0, sampleSize).reverse())
-    // }, [data]);
+    //     setSample(data.data.values?.slice(0, sampleSize).reverse())
+    // }, []);
+
+    useEffect(() => {
+        setSample(data?.data.values.slice(0, sampleSize).reverse())
+    }, [data]);
 
     const handleTimeFrameChange = (interval, sampleSize, intervalString) => {
         setInterval(interval);
@@ -75,7 +74,7 @@ function ChartWrapper({ selectedTicker }) {
     const renderChart = () => {
         if (isLoading) {
             return (
-                <div>Loading...</div>
+                <Spinner />
             )
         };
 
