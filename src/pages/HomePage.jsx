@@ -1,10 +1,12 @@
 import React from 'react'
-import Hero from '../components/Hero'
+import Hero from '../components/HeroLEGACY'
+import Hero2 from '../components/Hero'
 
 function HomePage() {
 
     return (
-        <Hero />
+        // <Hero />
+        <Hero2 />
     )
 }
 

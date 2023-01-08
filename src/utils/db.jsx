@@ -218,14 +218,21 @@ export const fetchWatchlist = async (uid) => {
 };
 
 export const updateWatchlist = async (uid, ticker) => {
-    const docRef = doc(db, "watchlists", uid)
+    const docRef = doc(db, "users", uid)
     const docSnap = await getDoc(docRef)
     if (!ticker) return;
 
     if (docSnap.exists()) {
         updateDoc(docRef, { watchlist: arrayUnion({ ...ticker, 'owner': uid }) })
     } else {
-        setDoc(docRef, { 'watchlist': ticker })
+        setDoc(docRef, {
+            watchlist: {
+                ...ticker,
+                owner: uid,
+                createdAt: serverTimestamp()
+            }
+        }
+        )
     };
 };
 
@@ -234,7 +241,9 @@ export function useWatchlistByOwner(owner) {
         ["watchlist", { owner }],
         createQuery(() =>
             query(
-                doc(db, "watchlists", owner),
+                doc(db, "users", owner),
+                // where("owner", "==", owner),
+                // orderBy("createdAt")
             )
         ),
         {

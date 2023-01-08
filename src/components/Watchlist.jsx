@@ -25,6 +25,7 @@ function Watchlist({ handleTickerItemClick, user }) {
             alert(watchlistError.message)
         }
 
+        console.log(watchlistData)
 
         if (watchlistData && !isWatchlistLoading) {
             return watchlistData.watchlist.map((ticker, i) => {

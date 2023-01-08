@@ -32,18 +32,29 @@ function TickerQuote() {
         console.log(err)
     }
 
-
-    console.log('is quote rendering?')
-
     const {
         selectedTicker,
         interval,
     } = useContext(selectedTickerContext)
 
-    const { isQuoteLoading, quoteData, quoteError } = useQuote(selectedTicker, interval, onSuccess, onError)
+    const {
+        isLoading: isQuoteLoading,
+        data: quoteData,
+        error: quoteError
+    } = useQuote(selectedTicker, interval, onSuccess, onError)
+
+    console.log(quoteData)
 
     const renderRange = () => {
-        if (!isQuoteLoading && !quoteError && quoteData.data !== undefined) {
+        if (quoteData.data.code === 400) {
+            return (
+                <div>{quoteData.data.message}</div>
+            )
+        }
+        if (!isQuoteLoading
+            && !quoteError
+            && quoteData.data !== undefined
+        ) {
             const { high, low } = quoteData.data.fifty_two_week
             return (
                 <div className='price_range-ctn'>
@@ -81,10 +92,14 @@ function TickerQuote() {
                     <span>
                         <h4>Previous Close:</h4>
                         <p style={{ display: 'flex' }}>{quoteData?.data.previous_close}
-                            <span style={{ color: `${quoteData?.data.percent_change >= 0 ? 'lightgreen' : 'salmon'}`, fontSize: '.8em' }}>
-                                {quoteData?.data.percent_change}%
-                            </span>
                         </p>
+                    </span>
+                    <span>
+                        <h4>Change in %:</h4>
+                        <span style={{ color: `${quoteData?.data.percent_change >= 0 ? 'lightgreen' : 'salmon'}`, fontSize: '.8em' }}>
+                            {`
+                                ${quoteData?.data.percent_change}%`}
+                        </span>
                     </span>
                     <span>
                         <h4>Average volume:</h4>

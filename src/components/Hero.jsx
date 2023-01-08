@@ -1,33 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Section from './Section'
 import './Hero.scss'
 
-function Hero(props) {
+function Hero2(props) {
 
-    const [dotx, setDotx] = useState(45)
-    const [doty, setDoty] = useState(45)
+
+    const eyeRef = useRef()
+
+    const [xAxis, setXAxis] = useState(50)
+    const [yAxis, setYAxis] = useState(50)
+    const [centerX, setCenterX] = useState()
+    const [centerY, setCenterY] = useState()
+
+    useEffect(() => {
+        setCenterX(eyeRef.current?.offsetLeft + (eyeRef.current.clientWidth / 2))
+        setCenterY(eyeRef.current?.offsetTop + (eyeRef.current.clientHeight / 2))
+    }, [])
 
 
     useEffect(() => {
         window.addEventListener('mousemove', (e) => {
-            setDotx((e.clientX / (e.screenY * 0.5)) * 10);
-            setDoty((e.clientY / e.screenY) * 80);
+
+            let factorX = (((e.clientX / centerX) - 1) * 100) * 0.3
+            let factorY = (((e.clientY / centerY) - 1) * 100) * 0.3
+
+            if (factorY < 0) {
+                setYAxis(factorY * 0.2)
+            } else {
+                setYAxis(factorY * 5)
+            }
+            if (factorX < 0) {
+                setXAxis(factorX * 0.2)
+            } else {
+                setXAxis(factorX * 1.5)
+            }
         })
     })
 
-
-    useState(() => {
-        window.addEventListener('mouseleave', () => {
-            setDotx(55)
-            setDoty(55)
-        })
-    })
 
     const irisStyles = {
-        transform: `translate(${dotx}%, ${doty}%)`
+        transform: `translate(${xAxis}%, ${yAxis}%)`
     }
     const pupilStyles = {
-        transform: `translate(${dotx * 1.2}%, ${doty * 1.2}%)`
+        transform: `translate(${xAxis * 1.2}%, ${yAxis * 1.2}%)`
     }
 
     const { height } = props
@@ -35,7 +50,7 @@ function Hero(props) {
         <Section display='flex' height={height} >
             <div className='tagline-ctn'>
                 <div className='logo-ctn'>
-                    <div className='eye'>
+                    <div className='eye' ref={eyeRef}>
                         <div className='iris' style={irisStyles}>
                             <div className='pupil' style={pupilStyles}>
                             </div>
@@ -54,4 +69,4 @@ function Hero(props) {
     )
 }
 
-export default Hero
+export default Hero2

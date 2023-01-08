@@ -40,7 +40,7 @@ function SelectedTickerProvider({ children }) {
 
 
     function selectFirstTicker() {
-        setSelectedTicker(watchlistData?.watchlist[0])
+        setSelectedTicker(watchlistData[0])
     }
 
 
@@ -58,7 +58,7 @@ function SelectedTickerProvider({ children }) {
 
 
     useEffect(() => {
-        if (watchlistData?.watchlist.length > 0) {
+        if (watchlistData?.length > 0) {
             watchlistData.watchlist.forEach((val) => {
                 setTickerArray(prev => { return [...prev, val.symbol] })
             })
@@ -69,7 +69,7 @@ function SelectedTickerProvider({ children }) {
     // Display top of stack ticker on mount
     useEffect(() => {
         if (!isWatchlistLoading && user && !selectedTicker) {
-            setSelectedTicker(watchlistData?.watchlist[0])
+            setSelectedTicker(watchlistData.watchlist[0])
         }
     })
 
