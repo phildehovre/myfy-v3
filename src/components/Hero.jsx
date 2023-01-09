@@ -30,7 +30,7 @@ function Hero2(props) {
                 setYAxis(factorY * 5)
             }
             if (factorX < 0) {
-                setXAxis(factorX * 0.2)
+                setXAxis(factorX)
             } else {
                 setXAxis(factorX * 1.5)
             }
@@ -47,25 +47,27 @@ function Hero2(props) {
 
     const { height } = props
     return (
-        <Section display='flex' height={height} >
-            <div className='tagline-ctn'>
-                <div className='logo-ctn'>
-                    <div className='eye' ref={eyeRef}>
-                        <div className='iris' style={irisStyles}>
-                            <div className='pupil' style={pupilStyles}>
+        <>
+            <Section display='flex' height={height} >
+                <div className='tagline-ctn'>
+                    <div className='logo-ctn'>
+                        <div className='eye' ref={eyeRef}>
+                            <div className='iris' style={irisStyles}>
+                                <div className='pupil' style={pupilStyles}>
+                                </div>
                             </div>
                         </div>
+                        <div className='shadow' ></div>
                     </div>
-                    <div className='shadow' ></div>
+                    <div className='tag'>
+                        <h1 className='tagline'>Never miss the trade.</h1>
+                        <h3 className='subtitle'>With MyFi's all-seeing eye</h3>
+                    </div>
                 </div>
-                <div className='tag'>
-                    <h1 className='tagline'>Never miss the trade.</h1>
-                    <h3 className='subtitle'>With MyFi's all-seeing eye</h3>
-                </div>
-            </div>
-            <div className='dot'
-            ></div>
-        </Section>
+                <div className='dot'
+                ></div>
+            </Section>
+        </>
     )
 }
 

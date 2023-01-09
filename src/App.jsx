@@ -10,7 +10,7 @@ import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
 import DiscoverPage from './pages/DiscoverPage'
 import WatchlistPage from './pages/WatchlistPage'
-import TickerCarousel from './components/TickerCarousel'
+import NewsCarousel from './components/NewsCarousel'
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
         <SelectedTickerProvider>
           <Router>
             <Nav />
-            {/* <TickerCarousel /> */}
+            <NewsCarousel />
             <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/login' element={<LoginPage />} />

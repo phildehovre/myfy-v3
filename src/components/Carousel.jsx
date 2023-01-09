@@ -34,7 +34,9 @@ function Carousel({ articlesArray, rotate, isLoading }) {
     }
 
     return (
-        <Section height='12em'>
+        <Section
+            height='8em'
+        >
             <div
                 className={`carousel-ctn ${isSlicing ? 'slicing' : ''} ${isRotating ? 'rotating' : ''}`}
             >

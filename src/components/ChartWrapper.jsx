@@ -22,14 +22,14 @@ function ChartWrapper({ selectedTicker }) {
 
     useEffect(() => {
         if (data?.data.code === 400) return
+        if (data?.length === 0) return
         setSample(data?.data.values.slice(0, sampleSize).reverse())
-    }, [data]);
+    }, [data, sampleSize]);
 
     const handleTimeFrameChange = (interval, sampleSize, intervalString) => {
         setInterval(interval);
         setSampleSize(sampleSize);
         setDisplayedInterval(intervalString)
-
     };
 
 
@@ -61,7 +61,6 @@ function ChartWrapper({ selectedTicker }) {
             )
         }
     }, [sample]);
-
 
     const handleSampleSizeChange = (val) => {
         if (val > 0 && sampleSize <= 5000) {

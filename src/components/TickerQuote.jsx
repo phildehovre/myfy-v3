@@ -43,12 +43,11 @@ function TickerQuote() {
         error: quoteError
     } = useQuote(selectedTicker, interval, onSuccess, onError)
 
-    console.log(quoteData)
 
     const renderRange = () => {
         if (quoteData.data.code === 400) {
             return (
-                <div>{quoteData.data.message}</div>
+                <h3 style={{ color: 'salmon' }}>{quoteData.data.message}</h3>
             )
         }
         if (!isQuoteLoading
@@ -73,9 +72,9 @@ function TickerQuote() {
 
     return (
         <>
-            {isQuoteLoading &&
+            {/* {isQuoteLoading &&
                 <Spinner />
-            }
+            } */}
 
             {!isQuoteLoading && !quoteError && quoteData?.data !== undefined &&
                 < div className='quote-ctn'>

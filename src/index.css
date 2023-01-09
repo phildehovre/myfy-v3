@@ -31,12 +31,7 @@ body {
   display: flex;
   width: 99vw;
   overflow-x: hidden;
-  /* width: 100vw; */
-  /* margin: 0; */
-  /* padding: 0; */
-  /* place-items: center; */
-  /* min-width: 320px; */
-  /* min-height: 100vh; */
+  justify-content: center;
 }
 
 h1 {

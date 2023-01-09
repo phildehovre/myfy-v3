@@ -8,7 +8,7 @@ ChartJS.register(LineController, Filler, LineElement, PointElement, LinearScale,
 function Chart({ data, handleSampleSizeChange }) {
 
     const handleWheelOverChart = (e) => {
-        e.stopPropagation();
+        console.log('wheel')
         handleSampleSizeChange(e.deltaY);
     };
 

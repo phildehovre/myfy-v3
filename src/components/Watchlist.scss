@@ -1,5 +1,7 @@
 .watchlist-ctn {
-    max-width: 350px;
-    width: 300px;
     height: 70vh;
+    background-color: rgb(24, 24, 24);
+    padding: 1em;
+    // margin: 1em;
+    grid-column: span 1;
 }

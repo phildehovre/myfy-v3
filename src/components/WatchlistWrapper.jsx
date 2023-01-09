@@ -15,14 +15,14 @@ function WatchlistWrapper({ user }) {
 
 
     return (
-        <>
+        <div className='watchlist-wrapper'>
             {
                 isWatchlistLoading && !watchlistData
                     ? <Spinner />
                     : <Watchlist user={user} />
             }
 
-        </>
+        </div>
     )
 }
 

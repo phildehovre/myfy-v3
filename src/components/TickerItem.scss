@@ -16,7 +16,6 @@
     &:hover {
         background-color: transparent;
         outline: 1px solid hsl(0, 0%, 39%);
-        min-width: 15em;
         transition: 250ms ease-in all;
     }
 
@@ -28,4 +27,10 @@
     &:active {
         background-color: transparent;
     }
+}
+
+.ticker_details-ctn {
+    position: absolute;
+    background-color: grey;
+    padding: 1em;
 }

@@ -11,6 +11,8 @@ import NewsCarousel from '../components/NewsCarousel'
 import { selectedTickerContext } from '../contexts/SelectedTickerProvider'
 import WatchlistWrapper from '../components/WatchlistWrapper'
 import Modal from '../components/Modal'
+import Chatbox from '../components/Chatbox'
+import './WatchlistPage.scss'
 
 function WatchlistPage() {
 
@@ -32,12 +34,11 @@ function WatchlistPage() {
     };
 
 
-
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!user) {
-            navigate('/login')
+            navigate('/')
         } else {
             navigate('/watchlist')
         }
@@ -54,6 +55,7 @@ function WatchlistPage() {
                     <WatchlistWrapper handleTickerItemClick={handleTickerSelection} user={user} />
                     <TickerQuote ticker={selectedTicker} />
                     <ChartWrapper selectedTicker={selectedTicker} handleTickerItemClick={handleTickerItemClick} />
+                    <Chatbox />
                 </>
             )
         }
@@ -61,7 +63,6 @@ function WatchlistPage() {
 
     return (
         <>
-            <NewsCarousel />
             {
                 showModal && tickerData?.data.code === 429
                     ? <Modal>
@@ -71,14 +72,10 @@ function WatchlistPage() {
                             I apologise for the inconvenience, please do stick around until the end of the countdown to resume your observation!
                         </p>
                     </Modal>
-                    : <PageContainer className='watchlist_page-ctn'>
+                    : <div className='watchlist_page-ctn'>
                         {renderWatchlistPage()}
-                    </PageContainer>
+                    </div>
             }
-            {/* {
-                watchlistError &&
-                <div className='error'>{error.message}</div>
-            } */}
         </>
     )
 };

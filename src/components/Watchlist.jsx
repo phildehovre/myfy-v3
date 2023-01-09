@@ -5,6 +5,7 @@ import Spinner from './Spinner'
 import TickerItem from './TickerItem'
 import './Watchlist.scss'
 import { selectedTickerContext } from '../contexts/SelectedTickerProvider'
+import '../pages/WatchlistPage.scss'
 
 function Watchlist({ handleTickerItemClick, user }) {
 
@@ -24,8 +25,6 @@ function Watchlist({ handleTickerItemClick, user }) {
         if (watchlistError) {
             alert(watchlistError.message)
         }
-
-        console.log(watchlistData)
 
         if (watchlistData && !isWatchlistLoading) {
             return watchlistData.watchlist.map((ticker, i) => {

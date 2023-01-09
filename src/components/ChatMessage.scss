@@ -1,0 +1,32 @@
+.chatmessage-ctn {
+    padding: .2em;
+    margin: 0;
+    display: flex;
+
+    .reverse-ctn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+
+        &.owner {
+            padding: 0 0 0 .5em;
+            flex-direction: row-reverse;
+        }
+    }
+
+
+    &.owner {
+        justify-content: flex-end;
+    }
+
+    .avatar {
+        border: 1px solid grey;
+        min-width: 1.5em;
+        min-height: 1.5em;
+        border-radius: 100%;
+        background-size: cover;
+        margin: 0 .5em
+    }
+}

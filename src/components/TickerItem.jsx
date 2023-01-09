@@ -1,26 +1,28 @@
 import React, {
     useState,
-    // useEffect, 
-    useContext
+    useContext, useEffect
 } from 'react';
 import { deleteItem } from '../utils/db'
 import { getAuth } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-// import { useQuote } from '../utils/db';
 
 import './TickerItem.scss'
 import { selectedTickerContext } from '../contexts/SelectedTickerProvider';
+import Tooltip from './Tooltip'
 
 function TickerItem(props) {
 
     const auth = getAuth()
 
     const [itemForDeletion, setItemForDeletion] = useState()
+    const [isHovered, setIsHovered] = useState(false)
+    const [detailsPosition, setDetailsPosition] = useState({ xAxis: 0, yAxis: 0 })
 
     const onDelete = (t) => {
-        deleteItem(t, auth.currentUser.uid)
-        selectFirstTicker()
+        deleteItem(t, auth.currentUser.uid).then(() => {
+            selectFirstTicker()
+        })
     }
 
     const { handleTickerSelection, selectFirstTicker } = useContext(selectedTickerContext)
@@ -29,9 +31,7 @@ function TickerItem(props) {
     }, [itemForDeletion])
 
     const { ticker, id } = props
-    const [isHovered, setIsHovered] = useState(false)
 
-    // const { isLoading, data, error } = useQuote(ticker)
 
     return (
         <div className='ticker_item-ctn'
@@ -44,7 +44,8 @@ function TickerItem(props) {
             </span>
             {isHovered === id &&
                 <>
-                    <span>{ticker.instrument_name}</span>
+                    {/* <div className='ticker_details-ctn' style={detailsStyles}>{ticker.instrument_name}</div> */}
+                    <Tooltip isHovered={isHovered} content={ticker.instrument_name} />
                     <FontAwesomeIcon onClick={() => { onDelete(ticker) }} icon={faTrash} />
                 </>
             }

@@ -253,7 +253,7 @@ export function useWatchlistByOwner(owner) {
 };
 
 export const deleteItem = async (ticker, uid) => {
-    const docRef = doc(db, "watchlists", uid)
+    const docRef = doc(db, "users", uid)
     const docSnap = await getDoc(docRef)
     if (!ticker) return;
 
@@ -261,3 +261,30 @@ export const deleteItem = async (ticker, uid) => {
         updateDoc(docRef, { watchlist: arrayRemove(ticker) })
     }
 }
+
+export const addMessage = async (value, ticker, uid, photoURL) => {
+    const collectionRef = collection(db, "messages")
+    addDoc(collectionRef, {
+        value,
+        owner: uid,
+        photoURL,
+        ticker,
+        createdAt: serverTimestamp()
+    })
+};
+
+export function useMessagesByTicker(ticker) {
+    return useQuery(
+        ['messages', { ticker }],
+        createQuery(() =>
+            query(
+                collection(db, "messages"),
+                where("ticker", "==", ticker),
+                orderBy('createdAt'),
+            )
+        ),
+        {
+            // enabled: ,
+        }
+    );
+};

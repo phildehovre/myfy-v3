@@ -1,7 +1,7 @@
 .navbar-ctn {
     height: 5em;
     top: 0;
-    width: 99vw;
+    width: 100%;
     display: grid;
     grid-template-columns: 10% clamp(10%, 500px, 60%) clamp(20%, 60%, 700px);
     justify-content: space-evenly;
