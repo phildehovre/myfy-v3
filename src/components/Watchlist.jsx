@@ -46,8 +46,8 @@ function Watchlist({ handleTickerItemClick, user }) {
             <div className='watchlist-ctn'>
                 {renderWatchlist()}
             </div>
-            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
-            <span className='watchlist-header'>Today:</span>
+            {/* <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+            <span className='watchlist-header'>Today:</span> */}
         </div>
 
     </>
