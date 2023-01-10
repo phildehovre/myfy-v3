@@ -6,6 +6,8 @@ import CarouselCell from './CarouselCell';
 
 function Carousel({ articlesArray, rotate, isLoading }) {
 
+    console.log(articlesArray)
+
     const [isRotating, setIsRotating] = useState(false)
     const [isSlicing, setIsSlicing] = useState(false)
     const [isAppearing, setIsAppearing] = useState(false)

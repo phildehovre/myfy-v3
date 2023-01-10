@@ -5,7 +5,12 @@ import './CarouselCell.scss'
 function CarouselCell(props) {
 
     const { className, article } = props
-    const { title, source, url, publishedAt, author } = article
+
+    // NEWS API 
+    // const { title, source: source_id, url, publishedAt: pubDate, author } = article
+
+    // NewsData.io
+    const { title, source_id, url, pubDate, author } = article
 
     // console.log(article)
 
@@ -29,8 +34,8 @@ function CarouselCell(props) {
             <h3 id='cell-title'>{formatTitle(title)}
             </h3>
             <span id='details'>
-                <p id='source'>{source.Name}</p>
-                <p id='date'>{formatDate(publishedAt)}</p>
+                <p id='source'>{source_id}</p>
+                <p id='date'>{formatDate(pubDate)}</p>
             </span>
         </a>
     )

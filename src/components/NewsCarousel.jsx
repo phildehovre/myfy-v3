@@ -11,11 +11,12 @@ function NewsCarousel() {
     const [articles, setArticles] = useState()
     const [isUpdateWindow, setIsUpdateWindow] = useState(false)
 
+    console.log(articles)
 
     const onSuccess = (data) => {
-        console.log(data)
+        console.log(data.data.results)
         setIsUpdateWindow(true)
-        setArticles(data.data.articles)
+        setArticles(data.data.results)
         setTimeout(() => {
             setIsUpdateWindow(false)
         }, 0)
@@ -32,26 +33,13 @@ function NewsCarousel() {
 
     const { isLoading, data, error } = useNews('', 8, onSuccess, onError)
 
-
-
     // useEffect(() => {
-    //     const options = {
-    //         method: 'GET',
-    //         url: 'https://bing-news-search1.p.rapidapi.com/news',
-    //         params: { safeSearch: 'Off', textFormat: 'Raw' },
-    //         headers: {
-    //             'X-BingApis-SDK': 'true',
-    //             'X-RapidAPI-Key': 'da84ee4161msha3be62b366ce120p144016jsn1e9700f66b86',
-    //             'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
-    //         }
-    //     };
-    //     axios.request(options).then(function (response) {
-    //         console.log(response.data);
-    //     }).catch(function (error) {
-    //         console.error(error);
-    //     });
+    //     axios.get('https://newsdata.io/api/1/news?apikey=pub_13963ae6636361e7833f616fb9725134dde63&q=pegasus&language=en')
+    //         .then(res => console.log(res))
+    //         .catch(err => console.log(err))
 
     // }, [])
+
 
 
 
