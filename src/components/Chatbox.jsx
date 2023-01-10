@@ -28,8 +28,6 @@ function Chat({ roomId }) {
     })
 
 
-    console.log(selectedTicker.symbol)
-
 
     const onSubmit = (d) => {
         if (d.chatInput.length === 0) return
@@ -49,7 +47,7 @@ function Chat({ roomId }) {
             return data.map((msg, i) => {
                 return (
                     <>
-                        <ChatMessage key={uuidv4()} msg={msg} />
+                        <ChatMessage key={i} msg={msg} />
                         {data.length - 1 === i &&
                             <div ref={scrollRef}></div>
                         }

@@ -11,10 +11,8 @@ function NewsCarousel() {
     const [articles, setArticles] = useState()
     const [isUpdateWindow, setIsUpdateWindow] = useState(false)
 
-    console.log(articles)
 
     const onSuccess = (data) => {
-        console.log(data.data.results)
         setIsUpdateWindow(true)
         setArticles(data.data.results)
         setTimeout(() => {

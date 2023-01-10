@@ -195,7 +195,7 @@ export const useQuote = (t, interval, onSuccess, onError) => {
     });
 }
 const fetchNews = (q = 'markets', size) => {
-    return axios.get(`https://newsdata.io/api/1/news?apikey=${import.meta.env.VITE_REACT_APP_NEWSDATA_API_KEY}&language=en`)
+    return axios.get(`https://newsdata.io/api/1/news?apikey=${import.meta.env.VITE_REACT_APP_NEWSDATA_API_KEY}&language=en&category=business,politics,top`)
     // return axios.get(`https://newsapi.org/v2/everything?q=${q}%20economy&pageSize=${size}&apiKey=${import.meta.env.VITE_REACT_APP_NEWSAPI_API_KEY}`)
     // return axios.request(options)
 };
