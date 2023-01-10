@@ -14,7 +14,6 @@ import {
     deleteField,
     arrayRemove,
 } from 'firebase/firestore';
-import { auth } from '../config/firebase'
 import {
     useQuery,
     hashQueryKey,
@@ -22,7 +21,6 @@ import {
     QueryClientProvider as QueryClientProviderBase,
 } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { minutesToMilliseconds } from './formatters';
 
 const client = new QueryClient();
 
@@ -196,10 +194,37 @@ export const useQuote = (t, interval, onSuccess, onError) => {
         enabled: !!t
     });
 }
+// const fetchNews = (q = 'markets', size) => {
+//     // return axios.get(`https://newsdata.io/api/1/news?apikey=${import.meta.env.VITE_REACT_APP_NEWSDATA_API_KEY}&qInTitle=${q}`)
+//     return axios.get(`https://newsapi.org/v2/everything?q=${q}%20economy&pageSize=${size}&apiKey=${import.meta.env.VITE_REACT_APP_NEWSAPI_API_KEY}`)
+// };
+
+// export const useNews = (q, size, onSuccess, onError) => {
+//     return useQuery(['news', { q, size }], () => fetchNews(q, size), {
+//         onSuccess,
+//         onError,
+//         refetchOnWindowFocus: false,
+//         refetchOnMount: true,
+//         refetch: false
+//     });
+// }
 const fetchNews = (q = 'markets', size) => {
     // return axios.get(`https://newsdata.io/api/1/news?apikey=${import.meta.env.VITE_REACT_APP_NEWSDATA_API_KEY}&qInTitle=${q}`)
-    return axios.get(`https://newsapi.org/v2/everything?q=${q}%20economy&pageSize=${size}&apiKey=${import.meta.env.VITE_REACT_APP_NEWSAPI_API_KEY}`)
+    // return axios.get(`https://newsapi.org/v2/everything?q=${q}%20economy&pageSize=${size}&apiKey=${import.meta.env.VITE_REACT_APP_NEWSAPI_API_KEY}`)
+    return axios.request(options)
 };
+
+const options = {
+    method: 'GET',
+    url: 'https://bing-news-search1.p.rapidapi.com/news',
+    params: { safeSearch: 'Off', textFormat: 'Raw' },
+    headers: {
+        'X-BingApis-SDK': 'true',
+        'X-RapidAPI-Key': import.meta.env.VITE_REACT_BING_NEWS_API_KEY,
+        'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
+    }
+};
+
 
 export const useNews = (q, size, onSuccess, onError) => {
     return useQuery(['news', { q, size }], () => fetchNews(q, size), {

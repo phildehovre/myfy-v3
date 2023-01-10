@@ -5,6 +5,7 @@ import { auth } from '../config/firebase'
 function ChatMessage(props) {
 
     const [user] = useAuthState(auth)
+    const { key } = props
 
 
     const { value, owner, photoURL } = props.msg
@@ -17,7 +18,7 @@ function ChatMessage(props) {
     }
 
     return (
-        <div className={`chatmessage-ctn ${isOwner}`}>
+        <div className={`chatmessage-ctn ${isOwner}`} key={key}>
             <span className={`reverse-ctn ${isOwner}`}>
                 <div className='avatar' style={avatarStyle} />
                 <p>{value}</p>
